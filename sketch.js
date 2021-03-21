@@ -46,6 +46,7 @@ function setup() {
   ground.x = ground.width /2;
   ground.velocityX = -4;
   
+  
   invisibleGround = createSprite(200,190,400,10);
   invisibleGround.visible = false;
   
@@ -128,6 +129,12 @@ function draw() {
     reset();
   }
     
+  camera.position.x = trex.x;
+ // camera.position.y = trex.y;
+
+  gameOver.x = camera.position.x;
+  restart.x = camera.position.x;
+
   }
   
   trex.collide(invisibleGround);
@@ -159,7 +166,7 @@ function spawnClouds() {
 
 function spawnObstacles() {
   if(frameCount % 60 === 0) {
-    var obstacle = createSprite(600,165,10,40);
+    var obstacle = createSprite(camera.position.x+width/2,165,10,40);
     obstacle.velocityX = -4;
     
     //generate random obstacles
